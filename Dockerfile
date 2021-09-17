@@ -8,21 +8,15 @@ RUN apt-get update \
     openssh-client
 
 # create a non-root user named dev
-RUN useradd --create-home --user-group --uid 1000 dev -s /bin/bash
+RUN useradd --user-group --uid 1000 dev -s /bin/bash
 
-# copy in public key
-RUN mkdir -p /home/dev/.ssh
-RUN --mount=type=secret,id=key_pub,dst=/etc/secrets/key.pub cat /etc/secrets/key.pub >> /home/dev/.ssh/authorized_keys
+# copy in start script
+COPY start.sh /usr/bin/start.sh
 
-# give non-root user ownership of home directory, dropbear key files
-RUN chown -R dev:dev /home/dev /etc/dropbear
+# give non-root user ownership dropbear key files, start script
+RUN chown -R dev:dev /etc/dropbear /usr/bin/start.sh
 
 # switch to non-root user
 USER dev
-# start ssh server
-# -F runs dropbear in the foreground
-# -E sends logs to stderr
-# -k disables remote port forwarding
-# -s disables password logins
-# -w disables root logins
-ENTRYPOINT ["dropbear", "-F", "-E", "-k", "-s", "-w"]
+# Run start script
+ENTRYPOINT ["/usr/bin/start.sh"]
