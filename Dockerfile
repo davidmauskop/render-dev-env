@@ -3,9 +3,35 @@ FROM debian:11
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y \
+    chromium \
+    curl \
+    dnsutils \
     dropbear \
-    # needed so VS Code can use scp to install itself
-    openssh-client
+    fzf \
+    git \
+    htop \
+    httpie \
+    iputils-ping \
+    jq \
+    lsof \
+    make \
+    man \
+    netcat \
+    nodejs \
+    npm \
+    openssh-client \
+    postgresql-client \
+    procps \
+    python3 \
+    python3-pip \
+    redis-tools \
+    rsync \
+    sqlite3 \
+    tmux \
+    unzip \
+    vim \
+    wget \
+    zip
 
 # create a non-root user named dev
 RUN useradd --user-group --uid 1000 dev -s /bin/bash
