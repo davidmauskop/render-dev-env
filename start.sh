@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p /home/dev/.ssh
-ln -sf /etc/secrets/key.pub /home/dev/.ssh/authorized_keys
+echo "$PUBLIC_KEY" > /home/dev/.ssh/authorized_keys
 
 # Maintain correct permissions on redeploy
 # dropbear complains if /home/dev is "writable by others"

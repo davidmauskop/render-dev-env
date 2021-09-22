@@ -1,0 +1,13 @@
+services:
+  - type: pserv
+    name: Dev Env
+    env: docker
+    envVars:
+      - key: PUBLIC_KEY
+        sync: false
+    disk:
+      name: Home Directory
+      mountPath: /home
+      sizeGB: 10
+
+
