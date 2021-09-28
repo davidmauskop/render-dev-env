@@ -13,4 +13,4 @@ repo as a template and then deploy by clicking the button below.
 
 [![Deploy to Render](http://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
-A forthcoming blog post will provide more detail.
+Read [my post on Render's blog](https://render.com/blog/host-a-dev-environment-on-render-with-vs-code-and-tailscale) for more.
